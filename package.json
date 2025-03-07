@@ -1,0 +1,17 @@
+{
+  "name": "microservices-on-moleculer",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "moleculer": "^0.14.0",
+    "moleculer-web": "^0.9.0",
+    "nats": "^1.3.2"
+  }
+}
