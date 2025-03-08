@@ -1,0 +1,26 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - apk add --no-cache nodejs npm docker-compose
+
+variables:
+  DOCKER_HOST: tcp://docker:2375
+  DOCKER_DRIVER: overlay2
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - app_start
+
+app_start_job:
+  stage: app_start
+  script:
+    - docker-compose up -d
+    - docker-compose ps
+    - docker inspect nats_server | grep IPAddress
+    - node index.js
+  cache:
+    paths:
+      - node_modules/

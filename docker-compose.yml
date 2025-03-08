@@ -1,0 +1,9 @@
+services:
+  nats:
+    image: nats:latest
+    container_name: nats_server
+    restart: unless-stopped
+    ports:
+      - "4222:4222"
+volumes:
+  nats: {}
