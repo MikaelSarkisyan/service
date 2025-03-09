@@ -1,5 +1,4 @@
 import moleculerWeb from 'moleculer-web';
-const HTTPServer = moleculerWeb.HTTPServer;
 import { ServiceBroker } from "moleculer";
 
 const broker = new ServiceBroker({
@@ -9,7 +8,7 @@ const broker = new ServiceBroker({
 
 broker.createService({
   name: "gateway",
-  mixins: [HTTPServer],
+  mixins: [moleculerWeb],
 
   settings: {
     routes: [
