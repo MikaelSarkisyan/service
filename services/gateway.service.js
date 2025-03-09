@@ -1,5 +1,5 @@
-const { ServiceBroker } = require("moleculer");
-const HTTPServer = require("moleculer-web");
+import { ServiceBroker } from "moleculer";
+import { HTTPServer } from "moleculer-web";
 
 const broker = new ServiceBroker({
   nodeID: "node-1",
@@ -23,4 +23,5 @@ broker.createService({
 
 broker.start();
 
-module.exports = broker;
+export default broker;
+

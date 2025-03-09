@@ -1,4 +1,4 @@
-const { ServiceBroker } = require("moleculer");
+import { ServiceBroker } from "moleculer";
 
 const broker = new ServiceBroker({
   nodeID: "node-2",

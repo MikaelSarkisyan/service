@@ -1,4 +1,4 @@
-const { ServiceBroker } = require("moleculer");
+import { ServiceBroker } from "moleculer";
 
 const broker = new ServiceBroker();
 
@@ -24,5 +24,4 @@ broker.createService({
   },
 });
 
-module.exports = broker;
-
+export default broker;
