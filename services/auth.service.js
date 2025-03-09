@@ -22,4 +22,4 @@ broker.createService({
   },
 });
 
-export default broker;
+module.exports = broker;

@@ -18,11 +18,13 @@ app_start_job:
   stage: app_start
   script:
     - docker-compose up -d
-    - node ./services/gateway.service.js
-    - node index.js
     - node ./services/auth.service.js
     - node ./services/email.service.js
     - node ./services/user.service.js
+    - sleep 20
+    - node ./services/gateway.service.js
+    - node index.js
+
   cache:
     paths:
       - node_modules/
