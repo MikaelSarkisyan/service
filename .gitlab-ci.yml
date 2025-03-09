@@ -1,10 +1,10 @@
-image: docker:latest
+image: node:20.5.1-alpine
 
 services:
-  - docker:dind
+  - docker:latest
 
 before_script:
-  - apk add --no-cache nodejs npm docker-compose
+  - apk add --no-cache docker docker-compose
 
 variables:
   DOCKER_HOST: tcp://docker:2375
@@ -22,7 +22,6 @@ app_start_job:
     - node ./services/email.service.js
     - node ./services/user.service.js
     - sleep 20
-    - node ./services/gateway.service.js
     - node index.js
 
   cache:

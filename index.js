@@ -1,8 +1,9 @@
 import { ServiceBroker } from "moleculer";
+import ApiService from "moleculer-web";
 
 const broker = new ServiceBroker({
   nodeID: "node-2",
-  transporter: "NATS",
+  transporter: "nats://localhost:4222",
 });
 
 broker.createService({
@@ -18,8 +19,10 @@ broker.createService({
   },
 });
 
+broker.createService(ApiService)
+
 broker.start();
 
 setTimeout(async () => {
-  console.log(await brokerNode1.call("$node.services"));
+  console.log(await broker.call("$node.services"));
 }, 5000);
