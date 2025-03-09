@@ -18,9 +18,11 @@ app_start_job:
   stage: app_start
   script:
     - docker-compose up -d
-    - docker-compose ps
-    - docker inspect nats_server | grep IPAddress
+    - node ./services/gateway.service.js
     - node index.js
+    - node ./services/auth.service.js
+    - node ./services/email.service.js
+    - node ./services/user.service.js
   cache:
     paths:
       - node_modules/

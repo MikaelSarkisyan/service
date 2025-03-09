@@ -1,32 +1,11 @@
 const { ServiceBroker } = require("moleculer");
-const HTTPServer = require("moleculer-web");
 
-const brokerNode1 = new ServiceBroker({
-  nodeID: "node-1",
-  transporter: "NATS",
-});
-
-brokerNode1.createService({
-  name: "gateway",
-  mixins: [HTTPServer],
-
-  settings: {
-    routes: [
-      {
-        aliases: {
-          "GET /products": "products.listProducts",
-        },
-      },
-    ],
-  },
-});
-
-const brokerNode2 = new ServiceBroker({
+const broker = new ServiceBroker({
   nodeID: "node-2",
   transporter: "NATS",
 });
 
-brokerNode2.createService({
+broker.createService({
   name: "products",
   actions: {
     listProducts(ctx) {
@@ -39,8 +18,7 @@ brokerNode2.createService({
   },
 });
 
-Promise.all([brokerNode1.start(), brokerNode2.start()]);
-
+broker.start();
 
 setTimeout(async () => {
   console.log(await brokerNode1.call("$node.services"));
